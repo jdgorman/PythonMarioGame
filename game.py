@@ -20,7 +20,7 @@ class Mario():
                                  pygame.image.load("mario4.png")]
         self.image_left_list = [pygame.transform.flip(image, True, False) for image in self.image_right_list]
         self.image_index = 0
-        self.offGroundCount = 0
+        self.off_ground_count = 0
         self.is_moving = False
         self.direction = "right"
 
@@ -35,11 +35,11 @@ class Mario():
         # Floor bounds
         if self.y > 360:
             self.yVel = 0
-            self.offGroundCount = 0
+            self.off_ground_count = 0
             self.y = 360
 
         # Value used to track Mario's jump height
-        self.offGroundCount = self.offGroundCount + 1
+        self.off_ground_count = self.off_ground_count + 1
 
         # Check if Mario is moving left or right for flipping image
         keys = pygame.key.get_pressed()
@@ -80,7 +80,7 @@ class Mario():
             self.x = self.sprite.x + self.sprite.w
         elif (self.y + self.h >= self.sprite.y) and (self.prev_y + self.h < self.sprite.y):
             self.y = self.sprite.y - self.h - 2
-            self.offGroundCount = 0
+            self.off_ground_count = 0
             self.yVel = 0
 
 
@@ -93,7 +93,7 @@ class Fireball():
         self.xVel = x_vel
         self.yVel = -12
         self.image = pygame.image.load("fireball.png")
-        self.offGroundCount = 0
+        self.off_ground_count = 0
 
     def update(self):
         # Fireball motion
@@ -104,11 +104,11 @@ class Fireball():
         # Floor bounds
         if self.y > 413:
             self.yVel = -10
-            self.offGroundCount = 0
+            self.off_ground_count = 0
             self.y = 413
 
         # Used to track firball's height from ground
-        self.offGroundCount = self.offGroundCount + 1
+        self.off_ground_count = self.off_ground_count + 1
 
 
 class Tube():
@@ -258,7 +258,7 @@ class Controller():
             self.model.mario.x -= 7
         if keys[K_RIGHT] or keys[K_d]:
             self.model.mario.x += 7
-        if keys[K_SPACE] and self.model.mario.offGroundCount < 3:
+        if keys[K_SPACE] and self.model.mario.off_ground_count < 3:
             self.model.mario.jump()
         if self.enableFireball:
             self.model.add_fireball()
