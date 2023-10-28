@@ -1,6 +1,6 @@
 # PythonMarioGame
 
-Use eiter the left and right arrow keys to move Mario or 'A' or 'D' on the keyboard. 
+Use eiter the left or right arrow keys to move Mario or 'A' or 'D' on the keyboard. 
 
 Space to jump
 
